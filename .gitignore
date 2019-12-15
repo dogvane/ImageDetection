@@ -348,3 +348,5 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+/src/ImageDetection_old/appsettings.Development.json
+/src/ImageDetection/appsettings.Development.json

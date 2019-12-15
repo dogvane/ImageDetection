@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29609.76
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageDetection", "ImageDetection\ImageDetection.csproj", "{EFE068FF-D2FC-4299-B792-70BDDA6FEED4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EFE068FF-D2FC-4299-B792-70BDDA6FEED4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFE068FF-D2FC-4299-B792-70BDDA6FEED4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFE068FF-D2FC-4299-B792-70BDDA6FEED4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFE068FF-D2FC-4299-B792-70BDDA6FEED4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F138332D-8800-4C08-A18B-E011FECC3113}
+	EndGlobalSection
+EndGlobal

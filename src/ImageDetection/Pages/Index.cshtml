@@ -1,0 +1,62 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "图片审核大比较";
+}
+
+<div class="text-center">
+    <form method="post" enctype="multipart/form-data" asp-controller="UploadFiles">
+        <div class="form-group">
+            <div class="col-md-10">
+                <p>请选择上传的图片</p>
+                <input class="fileinput" type="file" id="files" name="files" /> <input type="submit" value="查找" class="btn btn-primary" />
+            </div>
+        </div>
+
+        <div class="input-group mb-3">
+            <input type="text" id="imageUrl" name="imageUrl" class="form-control" placeholder="请粘贴图片地址" aria-label="请粘贴图片地址" aria-describedby="basic-addon2">
+            <div class="input-group-append">
+                <input class="btn btn-outline-secondary" type="submit" value="按图片链接搜索" />
+            </div>
+        </div>
+    </form>
+    @{ 
+        if(Model.DetectionResults.Count > 0)
+        {
+            <div class="detection_result">
+                <div class="">
+                        <img src="data:image/png;base64,@Model.ImageBase64" />
+                </div>
+                <div class="row">
+                    @{
+                        foreach (var result in Model.DetectionResults)
+                        {
+                            <div class="result_item col-md-@(12/Model.DetectionResults.Count)">
+                                <div>平台： @result.Platform</div>
+                                <div>结果： @result.Result (@result.Items.First().Suggestion%)</div>
+                                <a class="btn" data-toggle="collapse" href="#id_@result.Platform" role="button" aria-expanded="false" aria-controls="collapseExample">
+                                    查看原始返回值
+                                </a>
+                            </div>
+                        }
+                    }
+                </div>
+                <div id="sourceCode">
+                    @{
+                        foreach (var result in Model.DetectionResults)
+                        {
+                            <div class="collapse" id="id_@result.Platform" data-parent="#sourceCode">
+                                <div class="card card-body" style="text-align:left">
+                                    <pre>
+                                    @result.SourceResult
+                                    </pre>
+                                </div>
+                            </div>
+                        }
+                    }
+
+                </div>
+            </div>
+        }
+    }
+</div>
