@@ -104,6 +104,7 @@ namespace QcloudAI {
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.ToString());
                 return new DetectionResult { Error = ex.Message, Platform = "ÌÚÑ¶" };
             }
         }

@@ -33,7 +33,7 @@
                         {
                             <div class="result_item col-md-@(12/Model.DetectionResults.Count)">
                                 <div>平台： @result.Platform</div>
-                                <div>结果： @result.Result (@result.Items.First().Suggestion%)</div>
+                                <div>结果： @result.Result (@(result.Items.Count > 0 ? result.Items.First().Suggestion:0))%</div>
                                 <a class="btn" data-toggle="collapse" href="#id_@result.Platform" role="button" aria-expanded="false" aria-controls="collapseExample">
                                     查看原始返回值
                                 </a>

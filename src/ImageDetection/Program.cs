@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Security;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -13,6 +15,13 @@ namespace ImageDetection
     {
         public static void Main(string[] args)
         {
+            ServicePointManager.ServerCertificateValidationCallback += (sender, certificate, chain, errors) =>
+            {
+                Console.WriteLine("on ServerCertificateValidationCallback");
+                return true;
+                return errors == SslPolicyErrors.None;
+            };
+
             CreateHostBuilder(args).Build().Run();
         }
 

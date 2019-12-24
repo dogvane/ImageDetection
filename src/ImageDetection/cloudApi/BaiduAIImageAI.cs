@@ -50,7 +50,6 @@ namespace BaiduAI {
                 var jsonObj = client.Detect(bytes);
 
                 var ret2 = jsonObj.ToObject<BaiduImageDetectionResult>();
-
                 var ret = new DetectionResult() { Platform = "百度" };
 
                 foreach (var item in ret2.result)
@@ -88,6 +87,7 @@ namespace BaiduAI {
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.ToString());
                 return new DetectionResult { Error = ex.Message, Platform = "百度" };
             }
         }
