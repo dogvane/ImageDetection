@@ -7,9 +7,9 @@ EXPOSE 80
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
 COPY ["src/ImageDetection/ImageDetection.csproj", "ImageDetection/"]
-RUN dotnet restore "ImageDetection/ImageDetection.csproj"
+RUN dotnet restore "src/ImageDetection/ImageDetection.csproj"
 COPY . .
-WORKDIR "/ImageDetection"
+WORKDIR "src/ImageDetection"
 RUN dotnet build "ImageDetection.csproj" -c Release -o /app/build
 
 FROM build AS publish
