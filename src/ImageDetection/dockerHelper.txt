@@ -1,0 +1,14 @@
+﻿
+镜像编译
+copy Dockerfile ../
+cd.. 
+docker build -t imagedetection .
+
+因为默认创建的Docker文件，在制定项目路径时，在src下，还有一个ImageDetection目录，导致在copy源代码到build镜像时，会出现目录错误导致无法copy
+因此，要么改配置文件，要么把文件复制过去再重新build
+
+服务器运行
+docker run -p 7000:7000 imagedetection
+
+
+
