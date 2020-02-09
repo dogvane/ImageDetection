@@ -19,7 +19,6 @@ namespace ImageDetection
             {
                 Console.WriteLine("on ServerCertificateValidationCallback");
                 return true;
-                return errors == SslPolicyErrors.None;
             };
 
             CreateHostBuilder(args).Build().Run();

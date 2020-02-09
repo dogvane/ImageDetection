@@ -9,7 +9,7 @@ WORKDIR /src
 COPY ["src/ImageDetection/ImageDetection.csproj", "ImageDetection/"]
 RUN dotnet restore "ImageDetection/ImageDetection.csproj"
 COPY . .
-WORKDIR "/src/ImageDetection"
+WORKDIR "/ImageDetection"
 RUN dotnet build "ImageDetection.csproj" -c Release -o /app/build
 
 FROM build AS publish
