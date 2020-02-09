@@ -9,7 +9,9 @@
   <ItemGroup>
     <PackageReference Include="aliyun-net-sdk-green" Version="3.5.2" />
     <PackageReference Include="Baidu.AI" Version="3.6.14" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.9.10" />
     <PackageReference Include="SixLabors.ImageSharp" Version="1.0.0-beta0007" />
+    <PackageReference Include="System.Text.Encoding.CodePages" Version="4.7.0" />
     <PackageReference Include="TencentCloudSDK" Version="3.0.42" />
   </ItemGroup>
 
