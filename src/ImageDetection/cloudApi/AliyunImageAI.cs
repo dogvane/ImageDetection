@@ -17,7 +17,7 @@ namespace AliyunAI {
     /// 
     /// </summary>
     /// <remarks>
-    /// 2019-12-14 时的文档地址
+    /// 2019-12-14 鏃剁殑鏂囨。鍦板潃
     /// https://help.aliyun.com/document_detail/70292.html?spm=a2c4g.11186623.2.49.69ab75fd61QYTt#reference-fzy-ztm-v2b
     /// </remarks>
     public class ImageAI {
@@ -84,7 +84,7 @@ namespace AliyunAI {
                 CommonResponse response = client.GetCommonResponse(request);
                 var aliyunRet = JsonConvert.DeserializeObject<AliyunResult>(response.Data);
 
-                var ret = new DetectionResult() { Platform = "阿里" };
+                var ret = new DetectionResult() { Platform = "闃块噷" };
 
                 if (aliyunRet.code == 200)
                 {
@@ -114,7 +114,7 @@ namespace AliyunAI {
             }
             catch (Exception ex)
             {
-                return new DetectionResult { Error = ex.Message, Platform = "阿里" };
+                return new DetectionResult { Error = ex.Message, Platform = "闃块噷" };
             }
         }
 

@@ -13,7 +13,7 @@ namespace QcloudAI {
     /// 
     /// </summary>
     /// <remarks>
-    /// 返回的结果看
+    /// 杩斿洖鐨勭粨鏋滅湅
     /// https://cloud.tencent.com/document/product/669/14415
     /// </remarks>
     public class ImageAI {
@@ -44,7 +44,7 @@ namespace QcloudAI {
         }
 
         /// <summary>
-        /// 注意使用时，要缩小图片的尺寸
+        /// 娉ㄦ剰浣跨敤鏃讹紝瑕佺缉灏忓浘鐗囩殑灏哄
         /// </summary>
         /// <param name="bytes"></param>
         /// <returns></returns>
@@ -71,7 +71,7 @@ namespace QcloudAI {
                 ImageModerationResponse resp = client.ImageModeration(req).
                 ConfigureAwait(false).GetAwaiter().GetResult();
 
-                var ret = new DetectionResult() { Platform = "腾讯" };
+                var ret = new DetectionResult() { Platform = "鑵捐" };
 
                 switch (resp.PornResult.Type.ToLower())
                 {
@@ -105,7 +105,7 @@ namespace QcloudAI {
             catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
-                return new DetectionResult { Error = ex.Message, Platform = "腾讯" };
+                return new DetectionResult { Error = ex.Message, Platform = "鑵捐" };
             }
         }
     }
