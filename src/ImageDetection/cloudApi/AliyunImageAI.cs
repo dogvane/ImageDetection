@@ -10,6 +10,8 @@ using ImageDetection;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Text;
+using Aliyun.OSS.Util;
+using Aliyun.OSS;
 
 namespace AliyunAI {
 
@@ -24,6 +26,16 @@ namespace AliyunAI {
         public static string Region_Id = "";
         public static string API_KEY = "";
         public static string SECRET_KEY = "";
+        
+        /// <summary>
+        /// 文件上传的目的地
+        /// </summary>
+        public static string BucketName = "ossimagecheck";
+
+        /// <summary>
+        /// oss的服务器地址
+        /// </summary>
+        public static string OssEndPoint = "oss-cn-shanghai.aliyuncs.com";
 
         public object ImageDetection (string url) {
             IClientProfile profile = DefaultProfile.GetProfile (
@@ -49,6 +61,35 @@ namespace AliyunAI {
             CommonResponse response = client.GetCommonResponse (request);
 
             return response.Data;
+        }
+
+        /// <summary>
+        /// 上传文件到oss里
+        /// </summary>
+        /// <param name="bytes"></param>
+        /// <returns></returns>
+        public string UploadFile(string key, byte[] bytes)
+        {
+            var metadata = new ObjectMetadata() { ContentType = HttpUtils.GetContentType(key.ToLower(), null) };
+            if (key.EndsWith(".gif", StringComparison.OrdinalIgnoreCase))
+                metadata.ContentType = "image/gif";
+
+            using (var stream = new System.IO.MemoryStream())
+            {
+                stream.Write(bytes, 0, bytes.Length);
+                stream.Position = 0;
+
+                var result = new OssClient(OssEndPoint, API_KEY, SECRET_KEY).PutObject(BucketName, key, stream);
+
+                var isok = result.HttpStatusCode == System.Net.HttpStatusCode.OK;
+            }
+
+            return $"https://{BucketName}.{OssEndPoint}/{key}";
+        }
+
+        public void DeleteFile(string key)
+        {
+            new OssClient(OssEndPoint, API_KEY, SECRET_KEY).DeleteObject(BucketName, key);
         }
 
         /// <summary>

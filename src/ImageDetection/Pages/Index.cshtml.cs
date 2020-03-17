@@ -10,7 +10,7 @@ using Microsoft.Extensions.Logging;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.Processing;
 using SixLabors.ImageSharp.PixelFormats;
-
+using System.Threading;
 
 namespace ImageDetection.Pages
 {
@@ -35,6 +35,7 @@ namespace ImageDetection.Pages
 
             if (files != null && files.Count > 0)
             {
+                // 上传图片的模式
                 var file = files[0];
                 var stream = file.OpenReadStream();
                 size = stream.Length;
@@ -51,6 +52,13 @@ namespace ImageDetection.Pages
 
                     var qcloudRet = QcloudAI.ImageAI.Detection(bytes);
                     DetectionResults.Add(qcloudRet);
+
+                    // 阿里云平台，则需要先上传到他们的oss，然后再进行测试
+                    var aliyunApi = new AliyunAI.ImageAI();
+                    var url = aliyunApi.UploadFile(file.FileName.Replace(" ", ""), bytes);                    
+                    var aliyunRet = aliyunApi.Detection(url);
+                    DetectionResults.Add(aliyunRet);
+                    aliyunApi.DeleteFile(file.FileName);
 
                     ImageBase64 = Convert.ToBase64String(bytes);
                 }

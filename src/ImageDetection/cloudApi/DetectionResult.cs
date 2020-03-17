@@ -3,10 +3,9 @@ using System.Collections.Generic;
 
 namespace ImageDetection {
 
-    public interface IImageDetection {
-        DetectionResult Detection (string url);
-    }
-
+    /// <summary>
+    /// 最终检查出的结果类型
+    /// </summary>
     public class DetectionResultItem {
 
         /// <summary>
